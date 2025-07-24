@@ -1,0 +1,362 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.nav-logo h2 {
+    color: #2c5aa0;
+    font-weight: 600;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #2c5aa0;
+}
+
+/* Main content */
+main {
+    margin-top: 70px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section.highlight {
+    background: #f8f9fa;
+}
+
+/* Hero section */
+.hero {
+    background: linear-gradient(135deg, #2c5aa0 0%, #4a7bc8 100%);
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+.hero-info {
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 10px;
+    display: inline-block;
+    backdrop-filter: blur(10px);
+}
+
+.hero-info p {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+/* Research grid */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.research-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.research-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.research-card h3 {
+    color: #2c5aa0;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+/* Publications */
+.publications {
+    margin-top: 40px;
+}
+
+.publication {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+    border-left: 4px solid #2c5aa0;
+}
+
+.publication h4 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.publication p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.impact {
+    background: #2c5aa0;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.publications-link {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.publications-link a {
+    color: #2c5aa0;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Team section */
+.pi-info {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pi-info h3 {
+    color: #2c5aa0;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.bio h4 {
+    color: #333;
+    margin: 30px 0 15px 0;
+    font-size: 1.3rem;
+}
+
+.bio ul {
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.bio li {
+    margin-bottom: 8px;
+    color: #666;
+}
+
+/* Opportunities */
+.opportunities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.opportunity-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.opportunity-card h3 {
+    color: #2c5aa0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.opportunity-card h4 {
+    margin: 20px 0 10px 0;
+    color: #333;
+}
+
+.opportunity-card ul {
+    margin-left: 20px;
+}
+
+.opportunity-card li {
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.application-info {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    margin-top: 40px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.application-info h3 {
+    color: #2c5aa0;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.application-info a {
+    color: #2c5aa0;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Contact */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.contact-info h3 {
+    color: #2c5aa0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.contact-info a {
+    color: #2c5aa0;
+    text-decoration: none;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+}
+
+/* Section headings */
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .nav-menu {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+    
+    .section {
+        padding: 50px 0;
+    }
+    
+    .research-grid,
+    .opportunities-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+    }
+    
+    .nav-menu {
+        margin-top: 15px;
+    }
+    
+    main {
+        margin-top: 120px;
+    }
+    
+    .hero {
+        padding: 80px 0;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+}
