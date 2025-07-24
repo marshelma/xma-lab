@@ -10,7 +10,9 @@ The Ma Lab investigates the fundamental mechanisms of immune surveillance in can
 ## Research Focus
 
 🧬 **DNA Damage, epigenetic dysregulation & Tumor immunology** - How mutagenesis and repair defects and epigenetic disruption impact immune recognition and drive immunotherapy resistance
+
 🎯 **Cancer Vaccine and TCR-therapy development** - Advanced pipelines for TCR identification and immunogenicity prediction  
+
 ⚗️ **Synthetic biology approach to improve antigen presentation** - Expand the targetability of non-canonical antigens
 
 ## Key Publications
