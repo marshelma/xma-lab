@@ -15,9 +15,9 @@ The Ma Lab investigates the fundamental mechanisms of immune surveillance in can
 
 ## Key Publications
 
-- **Nature Genetics** (2022): POLE/POLD1 mutations in checkpoint blockade immunity
-- **Nature Cancer** (2020): BRCA mutations and immunotherapy response
-- **Trends in Cancer** (2022): Understanding what makes immunotherapies work
+- **Nature Genetics** (2022): Functional Landscapes of POLE and POLD1 Mutations in Checkpoint Blockade-Dependent Anti-Tumor Immunity.
+- **Nature Cancer** (2020): Mutations in BRCA1 and BRCA2 differentially affect the tumor microenvironment and response to checkpoint blockade immunotherapy. 
+- **Trends in Cancer** (2022): Solving the puzzle of what makes immunotherapies work. 
 
 ## Opportunities
 
