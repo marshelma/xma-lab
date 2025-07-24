@@ -36,5 +36,5 @@ We welcome **rotation students** and **postdoctoral fellows** interested in:
 
 ---
 
-**Website**: [View Lab Website](https://[your-username].github.io/xiaoxiao-ma-lab)  
-**Publications**: [PubMed Profile](https://www.ncbi.nlm.nih.gov/myncbi/xiaoxiao.ma.1/bibliography/public/)
+**UAB scholar page**: [View UAB scholar page](https://scholars.uab.edu/19792-xiaoxiao-ma)  
+**Publications**: [Google Scholar Profile](https://scholar.google.com/citations?user=1a_uN1EAAAAJ&hl=en)
