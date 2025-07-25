@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Research Cards</title>
+    <title>Ma Lab - Research</title>
     <style>
         * {
             margin: 0;
@@ -15,19 +15,162 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 40px 20px;
+            padding-top: 80px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .nav-logo h2 a {
+            color: #2c5aa0;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #2c5aa0, #667eea);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #2c5aa0, #667eea);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover::before,
+        .nav-menu a.active::before {
+            width: 100%;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #2c5aa0;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
         .section-title {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Research Overview Section */
+        .research-overview {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-overview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102,126,234,0.1), transparent);
+            transition: left 0.8s;
+        }
+
+        .research-overview:hover::before {
+            left: 100%;
+        }
+
+        .research-overview h2 {
+            color: #2c5aa0;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .research-overview p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Research Directions */
+        .research-directions {
+            margin-bottom: 80px;
+        }
+
+        .section-title-small {
             text-align: center;
             color: white;
-            font-size: 3rem;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            font-weight: 700;
             text-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
 
@@ -35,15 +178,16 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 40px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
         .research-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-radius: 20px;
             padding: 40px;
+            border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
@@ -57,7 +201,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(102,126,234,0.1), transparent);
             transition: left 0.5s;
         }
 
@@ -89,7 +233,7 @@
         .research-card h3 {
             color: #2c5aa0;
             margin-bottom: 20px;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             position: relative;
         }
@@ -114,6 +258,7 @@
             line-height: 1.7;
             margin-bottom: 25px;
             opacity: 0.9;
+            font-size: 1.1rem;
         }
 
         .research-aims {
@@ -168,81 +313,119 @@
             font-size: 0.8rem;
         }
 
-        .progress-bar {
-            margin-top: 20px;
-            background: rgba(102,126,234,0.1);
-            border-radius: 10px;
-            height: 8px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 10px;
-            width: 0%;
-            transition: width 2s ease-out 0.5s;
-        }
-
-        .research-card:hover .progress-fill {
-            width: 75%;
-        }
-
-        .explore-btn {
-            margin-top: 25px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        /* Research Approaches */
+        .approaches-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 80px;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .explore-btn::before {
+        .approaches-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.3s;
+            background: linear-gradient(90deg, transparent, rgba(102,126,234,0.1), transparent);
+            transition: left 0.8s;
         }
 
-        .explore-btn:hover::before {
+        .approaches-section:hover::before {
             left: 100%;
         }
 
-        .explore-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(102,126,234,0.3);
+        .approaches-section h2 {
+            color: #2c5aa0;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 700;
         }
 
-        .stats-overlay {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(102,126,234,0.9);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            opacity: 0;
-            transform: scale(0);
+        .approaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .approach-item {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
             transition: all 0.3s ease;
         }
 
-        .research-card:hover .stats-overlay {
-            opacity: 1;
-            transform: scale(1);
+        .approach-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102,126,234,0.2);
         }
 
+        .approach-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .approach-item h4 {
+            color: #2c5aa0;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .approach-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(102,126,234,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 15px 35px rgba(102,126,234,0.6);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title-small {
+                font-size: 2rem;
+            }
+            
             .research-grid {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -252,109 +435,245 @@
                 padding: 30px;
             }
             
+            .research-overview, .approaches-section {
+                padding: 30px;
+            }
+            
+            .approaches-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 10px;
+            }
+            
             .section-title {
                 font-size: 2rem;
+            }
+            
+            .section-title-small {
+                font-size: 1.8rem;
+            }
+            
+            .research-card {
+                padding: 25px;
+                margin: 0 10px;
+            }
+            
+            .research-overview, .approaches-section {
+                padding: 25px;
+                margin: 0 10px 60px;
+            }
+            
+            .fab {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
             }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html">Ma Lab</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html" class="active">Research</a></li>
+                <li><a href="people.html">People</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <h2 class="section-title">Research Directions</h2>
-        
-        <div class="research-grid">
-            <div class="research-card">
-                <div class="stats-overlay">Active Research</div>
-                <div class="research-icon">🧬</div>
-                <h3>DNA Damage Repair & Tumor Immunology</h3>
-                <p class="research-description">
-                    Our research demonstrates that DNA damage repair deficiencies lead to accumulation of immunogenic mutations, fundamentally alter the tumor immune microenvironment, and enhance tumor sensitivity to immune checkpoint blockade therapy.
-                </p>
-                <div class="research-aims">
-                    <h4>Research Aims:</h4>
-                    <ul>
-                        <li>Understanding how DNA damage repair deficient tumors develop resistance to immune checkpoint blockade therapies</li>
-                        <li>Characterizing DNA damage response in tumor-infiltrating immune cells and its impact on anti-tumor immunity</li>
-                        <li>Exploring how biochemical features of neoantigen peptides determine immunogenicity</li>
-                    </ul>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <button class="explore-btn">Explore Research</button>
-            </div>
+        <div class="section-header">
+            <h1 class="section-title">Research</h1>
+            <p class="section-subtitle">
+                Investigating fundamental mechanisms of immune surveillance during cancer development and therapy
+            </p>
+        </div>
 
-            <div class="research-card">
-                <div class="stats-overlay">Cutting-Edge</div>
-                <div class="research-icon">🎯</div>
-                <h3>Immunological Vulnerability of Epigenetic Dysregulated Tumors</h3>
-                <p class="research-description">
-                    Epigenetic dysregulation is a hallmark of cancer progression and drug resistance development. This dysregulation can drive aberrant expression of non-canonical tumor antigens, creating immunological vulnerabilities.
-                </p>
-                <div class="research-aims">
-                    <h4>Research Aims:</h4>
-                    <ul>
-                        <li>Elucidating the landscape of non-canonical tumor antigens associated with diverse epigenetic dysregulation</li>
-                        <li>Developing cancer vaccine and TCR therapies to target epigenetic dysregulation</li>
-                        <li>Identifying biomarkers for personalized immunotherapy approaches</li>
-                    </ul>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <button class="explore-btn">Explore Research</button>
-            </div>
+        <!-- Research Overview -->
+        <div class="research-overview">
+            <h2>Research Overview</h2>
+            <p>
+                Ma Lab investigates the fundamental mechanisms of immune surveillance during cancer development and therapy. We focus on understanding how DNA damage responses, mutagenesis processes, and epigenetic disruptions shape tumor immunogenicity and influence treatment resistance, with the ultimate goal of developing novel cancer vaccines, TCR therapies, and combination treatments that maximize the potential of the immune system.
+            </p>
+        </div>
 
-            <div class="research-card">
-                <div class="stats-overlay">Innovative</div>
-                <div class="research-icon">🔬</div>
-                <h3>Computational Immunogenomics</h3>
-                <p class="research-description">
-                    We employ diverse experimental approaches including cellular and animal models, patient samples and clinical cohorts, synthetic biology tools, and computational immunogenomic analyses.
-                </p>
-                <div class="research-aims">
-                    <h4>Research Methods:</h4>
-                    <ul>
-                        <li>Large-scale genomic and immunologic dataset analysis</li>
-                        <li>Machine learning approaches for biomarker discovery</li>
-                        <li>Integration of multi-omics data for therapeutic insights</li>
-                    </ul>
+        <!-- Research Directions -->
+        <div class="research-directions">
+            <h2 class="section-title-small">Research Directions</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <div class="research-icon">🧬</div>
+                    <h3>DNA Damage Repair & Tumor Immunology</h3>
+                    <p class="research-description">
+                        Our previous research demonstrated that DNA damage repair deficiencies lead to accumulation of immunogenic mutations, fundamentally alter the tumor immune microenvironment, and enhance tumor sensitivity to immune checkpoint blockade therapy. However, the complex interplay between DNA damage response pathways and immune surveillance mechanisms in cancer requires deeper investigation to fully understand and therapeutically exploit.
+                    </p>
+                    <div class="research-aims">
+                        <h4>Research Aims:</h4>
+                        <ul>
+                            <li>Understanding how DNA damage repair deficient tumors developed primary and acquired resistance to immune checkpoint blockade therapies</li>
+                            <li>Characterizing DNA damage response in tumor-infiltrating immune cells and its impact on anti-tumor immunity</li>
+                            <li>Exploring how biochemical features of neoantigen peptides determine the immunogenicity of the mutagenesis processes</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
+
+                <div class="research-card">
+                    <div class="research-icon">🎯</div>
+                    <h3>Immunological Vulnerability of Epigenetic Dysregulated Tumors</h3>
+                    <p class="research-description">
+                        Epigenetic dysregulation is a hallmark of cancer progression and drug resistance development. This dysregulation can also drive aberrant expression of non-canonical tumor antigens, potentially creating immunological vulnerabilities that may be targeted for therapeutic benefit.
+                    </p>
+                    <div class="research-aims">
+                        <h4>Research Aims:</h4>
+                        <ul>
+                            <li>Elucidating the landscape of non-canonical tumor antigens associated with diverse epigenetic dysregulation in tumors</li>
+                            <li>Developing cancer vaccine and TCR therapies to target epigenetic dysregulation</li>
+                            <li>Identifying biomarkers for personalized immunotherapy approaches</li>
+                        </ul>
+                    </div>
                 </div>
-                <button class="explore-btn">Explore Research</button>
+            </div>
+        </div>
+
+        <!-- Research Approaches -->
+        <div class="approaches-section">
+            <h2>Research Approaches</h2>
+            <p style="color: #666; font-size: 1.2rem; margin-bottom: 30px;">
+                Our research employs diverse experimental approaches including cellular and animal models, patient samples and clinical cohorts, synthetic biology tools, and computational immunogenomic analyses to investigate these fundamental questions.
+            </p>
+            
+            <div class="approaches-grid">
+                <div class="approach-item">
+                    <span class="approach-icon">🔬</span>
+                    <h4>Experimental Models</h4>
+                    <p>Cellular and animal models to study immune-tumor interactions and therapeutic responses</p>
+                </div>
+                
+                <div class="approach-item">
+                    <span class="approach-icon">👥</span>
+                    <h4>Clinical Cohorts</h4>
+                    <p>Patient samples and clinical data to validate findings and identify biomarkers</p>
+                </div>
+                
+                <div class="approach-item">
+                    <span class="approach-icon">🧪</span>
+                    <h4>Synthetic Biology</h4>
+                    <p>Engineering tools for neoantigen discovery and TCR therapy development</p>
+                </div>
+                
+                <div class="approach-item">
+                    <span class="approach-icon">💻</span>
+                    <h4>Computational Analysis</h4>
+                    <p>Immunogenomic analyses of large-scale genomic and immunologic datasets</p>
+                </div>
+                
+                <div class="approach-item">
+                    <span class="approach-icon">🎯</span>
+                    <h4>Translational Research</h4>
+                    <p>Bridging basic discoveries to clinical applications and therapeutic development</p>
+                </div>
+                
+                <div class="approach-item">
+                    <span class="approach-icon">🤝</span>
+                    <h4>Collaborative Science</h4>
+                    <p>Interdisciplinary partnerships with clinicians, computational biologists, and industry</p>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Floating Action Button -->
+    <div class="fab" onclick="scrollToTop()">↑</div>
+
     <script>
-        // Add intersection observer for animations
-        const cards = document.querySelectorAll('.research-card');
-        
-        const observer = new IntersectionObserver((entries) => {
+        // Add navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 8px 32px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide FAB based on scroll position
+        window.addEventListener('scroll', function() {
+            const fab = document.querySelector('.fab');
+            if (window.scrollY > 200) {
+                fab.style.opacity = '1';
+                fab.style.transform = 'scale(1)';
+            } else {
+                fab.style.opacity = '0';
+                fab.style.transform = 'scale(0.8)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
+        // Observe cards for scroll animations
+        const cards = document.querySelectorAll('.research-card, .approach-item, .research-overview, .approaches-section');
         cards.forEach(card => {
             card.style.opacity = '0';
-            card.style.transform = 'translateY(50px)';
+            card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
         });
 
-        // Add click interaction
-        cards.forEach(card => {
+        // Add click effects to research cards
+        document.querySelectorAll('.research-card').forEach(card => {
             card.addEventListener('click', function() {
                 this.style.transform = 'scale(0.98)';
                 setTimeout(() => {
                     this.style.transform = 'translateY(-15px) rotateY(5deg)';
                 }, 150);
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
     </script>
