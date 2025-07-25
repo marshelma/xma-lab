@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Research Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .research-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .research-card:hover::before {
+            left: 100%;
+        }
+
+        .research-card:hover {
+            transform: translateY(-15px) rotateY(5deg);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+
+        .research-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .research-card h3 {
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .research-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .research-card:hover h3::after {
+            width: 100%;
+        }
+
+        .research-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .research-aims {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f0ff 100%);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #667eea;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-aims::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(102,126,234,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .research-aims h4 {
+            color: #2c5aa0;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .research-aims ul {
+            list-style: none;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .research-aims li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #444;
+            line-height: 1.6;
+        }
+
+        .research-aims li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8rem;
+        }
+
+        .progress-bar {
+            margin-top: 20px;
+            background: rgba(102,126,234,0.1);
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 2s ease-out 0.5s;
+        }
+
+        .research-card:hover .progress-fill {
+            width: 75%;
+        }
+
+        .explore-btn {
+            margin-top: 25px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .explore-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.3s;
+        }
+
+        .explore-btn:hover::before {
+            left: 100%;
+        }
+
+        .explore-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(102,126,234,0.3);
+        }
+
+        .stats-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(102,126,234,0.9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .research-card:hover .stats-overlay {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        @media (max-width: 768px) {
+            .research-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .research-card {
+                padding: 30px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="section-title">Research Directions</h2>
+        
+        <div class="research-grid">
+            <div class="research-card">
+                <div class="stats-overlay">Active Research</div>
+                <div class="research-icon">🧬</div>
+                <h3>DNA Damage Repair & Tumor Immunology</h3>
+                <p class="research-description">
+                    Our research demonstrates that DNA damage repair deficiencies lead to accumulation of immunogenic mutations, fundamentally alter the tumor immune microenvironment, and enhance tumor sensitivity to immune checkpoint blockade therapy.
+                </p>
+                <div class="research-aims">
+                    <h4>Research Aims:</h4>
+                    <ul>
+                        <li>Understanding how DNA damage repair deficient tumors develop resistance to immune checkpoint blockade therapies</li>
+                        <li>Characterizing DNA damage response in tumor-infiltrating immune cells and its impact on anti-tumor immunity</li>
+                        <li>Exploring how biochemical features of neoantigen peptides determine immunogenicity</li>
+                    </ul>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <button class="explore-btn">Explore Research</button>
+            </div>
+
+            <div class="research-card">
+                <div class="stats-overlay">Cutting-Edge</div>
+                <div class="research-icon">🎯</div>
+                <h3>Immunological Vulnerability of Epigenetic Dysregulated Tumors</h3>
+                <p class="research-description">
+                    Epigenetic dysregulation is a hallmark of cancer progression and drug resistance development. This dysregulation can drive aberrant expression of non-canonical tumor antigens, creating immunological vulnerabilities.
+                </p>
+                <div class="research-aims">
+                    <h4>Research Aims:</h4>
+                    <ul>
+                        <li>Elucidating the landscape of non-canonical tumor antigens associated with diverse epigenetic dysregulation</li>
+                        <li>Developing cancer vaccine and TCR therapies to target epigenetic dysregulation</li>
+                        <li>Identifying biomarkers for personalized immunotherapy approaches</li>
+                    </ul>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <button class="explore-btn">Explore Research</button>
+            </div>
+
+            <div class="research-card">
+                <div class="stats-overlay">Innovative</div>
+                <div class="research-icon">🔬</div>
+                <h3>Computational Immunogenomics</h3>
+                <p class="research-description">
+                    We employ diverse experimental approaches including cellular and animal models, patient samples and clinical cohorts, synthetic biology tools, and computational immunogenomic analyses.
+                </p>
+                <div class="research-aims">
+                    <h4>Research Methods:</h4>
+                    <ul>
+                        <li>Large-scale genomic and immunologic dataset analysis</li>
+                        <li>Machine learning approaches for biomarker discovery</li>
+                        <li>Integration of multi-omics data for therapeutic insights</li>
+                    </ul>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <button class="explore-btn">Explore Research</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add intersection observer for animations
+        const cards = document.querySelectorAll('.research-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Add click interaction
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-15px) rotateY(5deg)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
