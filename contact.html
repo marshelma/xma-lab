@@ -15,12 +15,84 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 40px 20px;
+            padding-top: 80px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .nav-logo h2 a {
+            color: #2c5aa0;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #2c5aa0, #667eea);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #2c5aa0, #667eea);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-menu a:hover::before,
+        .nav-menu a.active::before {
+            width: 100%;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #2c5aa0;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 40px 20px;
         }
 
         .section-header {
@@ -551,6 +623,21 @@
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html">Ma Lab</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="people.html">People</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="section-header">
             <h1 class="section-title">Contact & Opportunities</h1>
@@ -589,9 +676,9 @@
                         
                         <div class="office-hours">
                             <h5>Mailing Address</h5>
-                            <p>1918 University Blvd<br>
-                            MCLM 624<br>
-                            Birmingham, AL 35233</p>
+                            <p>720 20th Street South<br>
+                            Kaul Genetics Building<br>
+                            Birmingham, AL 35294-0024</p>
                         </div>
                     </div>
                 </div>
@@ -742,9 +829,9 @@
                     <p>Graduate program applications and requirements</p>
                 </a>
                 
-                <a href="https://www.uab.edu/shp/cds/biomedical-and-health-sciences" target="_blank" class="link-card">
-                    <h4>Biomedical and Health Sciences Program (MS)</h4>
-                    <p>MSBHS program details and application information</p>
+                <a href="https://www.uab.edu/medicine/genetics/graduate-programs" target="_blank" class="link-card">
+                    <h4>Genetics Graduate Programs</h4>
+                    <p>GGB program details and application information</p>
                 </a>
             </div>
         </div>
@@ -754,6 +841,18 @@
     <div class="fab" onclick="scrollToTop()">↑</div>
 
     <script>
+        // Add navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 8px 32px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
+            }
+        });
+
         // Scroll to top function
         function scrollToTop() {
             window.scrollTo({
