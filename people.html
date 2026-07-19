@@ -469,6 +469,63 @@
             margin: 80px 0;
         }
 
+        .alumni-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            overflow: hidden;
+        }
+
+        .alumni-list-item {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 20px 30px;
+            border-bottom: 1px solid rgba(102,126,234,0.15);
+            transition: background 0.3s ease;
+        }
+
+        .alumni-list-item:last-child {
+            border-bottom: none;
+        }
+
+        .alumni-list-item:hover {
+            background: rgba(102,126,234,0.05);
+        }
+
+        .alumni-name {
+            color: #2c5aa0;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex: 1 1 auto;
+        }
+
+        .alumni-role {
+            color: #666;
+            font-size: 0.95rem;
+            flex: 2 1 auto;
+        }
+
+        .alumni-year {
+            color: #888;
+            font-style: italic;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 600px) {
+            .alumni-list-item {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
         .alumni-message {
             display: flex;
             justify-content: center;
@@ -750,7 +807,7 @@
         <!-- Team Statistics -->
         <div class="team-stats">
             <div class="stat-card">
-                <div class="stat-number">2</div>
+                <div class="stat-number">3</div>
                 <div class="stat-label">Team Members</div>
             </div>
             <div class="stat-card">
@@ -758,7 +815,7 @@
                 <div class="stat-label">Open Positions</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">0</div>
+                <div class="stat-number">3</div>
                 <div class="stat-label">Alumni</div>
             </div>
             <div class="stat-card">
@@ -777,7 +834,7 @@
                     </div>
                     <div class="pi-contact-quick">
                         <h4>Quick Contact</h4>
-                        <p><a href="mailto:xma2@uab.edu">xma2@uab.edu</a></p>
+                        <p><a href="mailto:maxx@uab.edu">maxx@uab.edu</a></p>
                         <p>📞 205-934-5948</p>
                         <p>🏢 MCLM633</p>
                     </div>
@@ -823,10 +880,6 @@
                 <div class="member-card">
                     <div class="member-image">
                         <div class="member-placeholder">XL</div>
-                        <div class="member-overlay">
-                            <h4>Welcome to the Team!</h4>
-                            <p>Instructor in Genetics</p>
-                        </div>
                     </div>
                     <div class="member-info">
                         <h3>Xiuxiu Li, Ph.D.</h3>
@@ -834,6 +887,21 @@
                         <p class="member-duration">Joined June 2025</p>
                         <p class="member-bio">
                             Dr. Li brings expertise in cancer biology, steroid metabolism, and post-translational modifications with a focus on hormone-related cancers.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Current Member -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <div class="member-placeholder">MW</div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Micaiah Mae Wetzold</h3>
+                        <p class="member-role">Graduate Student</p>
+                        <p class="member-duration">Joined June 2026</p>
+                        <p class="member-bio">
+                            Micaiah studies how epigenetic disruption alters cell identity and inflammatory status.
                         </p>
                     </div>
                 </div>
@@ -851,9 +919,9 @@
                         <h3>Postdoctoral Fellow</h3>
                         <p class="member-role">Open Position</p>
                         <p class="member-bio">
-                            Join our team to lead cutting-edge research in understanding immune surveillance mechanisms and developing novel immunotherapies.
+                            Please inquire regarding potential postdoctoral openings to lead cutting-edge research in understanding immune surveillance mechanisms and developing novel immunotherapies.
                         </p>
-                        <a href="#contact" class="join-button">Apply Now</a>
+                        <a href="#contact" class="join-button">Inquire</a>
                     </div>
                 </div>
 
@@ -867,10 +935,10 @@
                         </div>
                     </div>
                     <div class="member-info">
-                        <h3>Rotation Students</h3>
-                        <p class="member-role">Multiple Positions Available</p>
+                        <h3>Graduate Student</h3>
+                        <p class="member-role">1 Position Available</p>
                         <p class="member-bio">
-                            Graduate students interested in cancer immunotherapy are welcome to rotate through our lab to explore exciting research projects.
+                            Graduate students interested in cancer immunotherapy are welcome to join our lab to explore exciting research projects.
                         </p>
                         <a href="#contact" class="join-button">Learn More</a>
                     </div>
@@ -881,15 +949,33 @@
         <!-- Alumni Section -->
         <div class="alumni-section">
             <h2 style="text-align: center; color: #2c5aa0; margin-bottom: 40px; font-size: 2.5rem;">Lab Alumni</h2>
-            
+
+            <ul class="alumni-list">
+                <li class="alumni-list-item">
+                    <span class="alumni-name">Aayush Rastogi</span>
+                    <span class="alumni-role">Rotation Student, Graduate Student</span>
+                    <span class="alumni-year">2026</span>
+                </li>
+                <li class="alumni-list-item">
+                    <span class="alumni-name">Krisha Talati</span>
+                    <span class="alumni-role">Rotation Student, Master Student</span>
+                    <span class="alumni-year">2026</span>
+                </li>
+                <li class="alumni-list-item">
+                    <span class="alumni-name">Tarralyn Clark</span>
+                    <span class="alumni-role">Rotation Student, MSTP Student</span>
+                    <span class="alumni-year">2026</span>
+                </li>
+            </ul>
+
             <div class="alumni-message">
                 <div class="message-card">
                     <div class="message-icon">🎓</div>
                     <h3>Growing Our Research Family</h3>
-                    <p>As a newly established lab at UAB, we're just beginning our journey. Our first alumni will be the pioneers who help build our research legacy and contribute to advancing cancer immunotherapy.</p>
+                    <p>As a newly established lab at UAB, we're just beginning our journey. We're grateful to the rotation students above who helped build our research legacy and contribute to advancing cancer immunotherapy.</p>
                     <p>We look forward to celebrating the achievements of our future graduates and trainees as they move on to make their own contributions to science and medicine.</p>
                     <div class="future-message">
-                        <em>"This space will soon showcase the remarkable careers and accomplishments of our lab alumni."</em>
+                        <em>"This space will continue to showcase the remarkable careers and accomplishments of our lab alumni."</em>
                     </div>
                 </div>
             </div>
